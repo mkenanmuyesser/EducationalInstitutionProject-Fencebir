@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>11503c4c-5a48-4b78-b840-31add6ae2362</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Bakim\**" />
+    <Compile Remove="Views\Blog\**" />
+    <Compile Remove="Views\CerezPolitikasi\**" />
+    <Compile Remove="Views\Franchise\**" />
+    <Compile Remove="Views\Galeri\**" />
+    <Compile Remove="Views\Hakkimizda\**" />
+    <Compile Remove="Views\Hata\**" />
+    <Compile Remove="Views\Home\**" />
+    <Compile Remove="Views\Iletisim\**" />
+    <Compile Remove="Views\Ogretmen\**" />
+    <Compile Remove="Views\Takvim\**" />
+    <Compile Remove="Views\Yayin\**" />
+    <Content Remove="Views\Bakim\**" />
+    <Content Remove="Views\Blog\**" />
+    <Content Remove="Views\CerezPolitikasi\**" />
+    <Content Remove="Views\Franchise\**" />
+    <Content Remove="Views\Galeri\**" />
+    <Content Remove="Views\Hakkimizda\**" />
+    <Content Remove="Views\Hata\**" />
+    <Content Remove="Views\Home\**" />
+    <Content Remove="Views\Iletisim\**" />
+    <Content Remove="Views\Ogretmen\**" />
+    <Content Remove="Views\Takvim\**" />
+    <Content Remove="Views\Yayin\**" />
+    <EmbeddedResource Remove="Views\Bakim\**" />
+    <EmbeddedResource Remove="Views\Blog\**" />
+    <EmbeddedResource Remove="Views\CerezPolitikasi\**" />
+    <EmbeddedResource Remove="Views\Franchise\**" />
+    <EmbeddedResource Remove="Views\Galeri\**" />
+    <EmbeddedResource Remove="Views\Hakkimizda\**" />
+    <EmbeddedResource Remove="Views\Hata\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Views\Iletisim\**" />
+    <EmbeddedResource Remove="Views\Ogretmen\**" />
+    <EmbeddedResource Remove="Views\Takvim\**" />
+    <EmbeddedResource Remove="Views\Yayin\**" />
+    <None Remove="Views\Bakim\**" />
+    <None Remove="Views\Blog\**" />
+    <None Remove="Views\CerezPolitikasi\**" />
+    <None Remove="Views\Franchise\**" />
+    <None Remove="Views\Galeri\**" />
+    <None Remove="Views\Hakkimizda\**" />
+    <None Remove="Views\Hata\**" />
+    <None Remove="Views\Home\**" />
+    <None Remove="Views\Iletisim\**" />
+    <None Remove="Views\Ogretmen\**" />
+    <None Remove="Views\Takvim\**" />
+    <None Remove="Views\Yayin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\BakimController.cs" />
+    <Compile Remove="Controllers\BlogController.cs" />
+    <Compile Remove="Controllers\CerezPolitikasiController.cs" />
+    <Compile Remove="Controllers\FranchiseController.cs" />
+    <Compile Remove="Controllers\GaleriController.cs" />
+    <Compile Remove="Controllers\HakkimizdaController.cs" />
+    <Compile Remove="Controllers\HataController.cs" />
+    <Compile Remove="Controllers\IletisimController.cs" />
+    <Compile Remove="Controllers\OgretmenController.cs" />
+    <Compile Remove="Controllers\TakvimController.cs" />
+    <Compile Remove="Controllers\YayinController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

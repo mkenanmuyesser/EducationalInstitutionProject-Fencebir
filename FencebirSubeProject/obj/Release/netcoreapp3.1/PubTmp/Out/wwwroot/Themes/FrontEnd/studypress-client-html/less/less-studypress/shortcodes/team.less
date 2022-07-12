@@ -1,0 +1,114 @@
+/*
+ * Shortcode: Teams.less
+ * -----------------------------------------------
+*/
+.team-members .team-member .team-thumb {
+  overflow: hidden;
+}
+.team-members .team-member img {
+    .transition(all 300ms ease-in-out 0s);
+}
+.team-members .team-member:hover img {
+  transform: scale3d(1.1, 1.08, 1.1);
+}
+.team-member .team-details {
+  background: #f7f8fa none repeat scroll 0 0;
+  border: 1px solid #eee;  
+  .transition(all 300ms ease-in-out 0s);
+}
+.team-member:hover .team-details h4,
+.team-member:hover .team-details p,
+.team-member:hover .team-details a {
+    color: #fff;
+    .transition(all 300ms ease-in-out 0s);
+}
+.team-member .team-details a {
+    .transition(all 300ms ease-in-out 0s);
+}
+.team-block {
+  margin: 0 auto 30px;
+  .team-thumb {
+    overflow: hidden;
+    position: relative;
+    .team-overlay {
+      height: 85.4%;
+      padding: 40px 20px 0 30px;
+      position: absolute;
+      top: -90%;
+      .transition(all 300ms ease-in-out 0s);
+      width: 100%;
+      .styled-icons {
+        position: absolute;
+        bottom: 4px;
+         a {
+          border-color: @white-base;
+          &:hover {
+            background: @white-base none repeat scroll 0 0;
+          }
+          i {
+            color: @white-base;
+          }
+        }
+      }
+      &::after {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-image: none;
+        border-style: solid;
+        border-width: 22px;
+        bottom: -44px;
+        content: "";
+        display: block;
+        height: 44px;
+        left: -2px;
+        position: absolute;
+        width: 40px;
+      }
+    }
+    .styled-icons {
+      bottom: 0;
+      padding: 7px 20px 0 0;
+      position: absolute;
+      right: 0;
+      width: 84%;
+      a {
+        margin: 0px;
+        i {
+          color: @white-base;
+          font-size: 14px;
+          margin-top: 8px;
+        }
+        &:hover {
+          border-color: @white-base;
+          .transition(all 100ms ease-in-out 0s);
+        }
+      }
+      &::after {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-image: none;
+        border-style: solid;
+        border-width: 22px;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 40px;
+        left: -44px;
+        position: absolute;
+        width: 40px;
+      }
+    }
+  }
+  .team-bottom-part {
+    background: @gray-lighter none repeat scroll 0 0;
+    margin-top: 6px;
+    padding: 10px 16px 12px 30px;
+  }
+}
+.team-block:hover .team-overlay {
+  top: 0;
+}

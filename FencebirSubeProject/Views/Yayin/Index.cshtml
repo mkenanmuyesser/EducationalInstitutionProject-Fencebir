@@ -1,0 +1,68 @@
+﻿@model List<YayinViewModel>
+@{
+    ViewData["Title"] = "Yayınlarımız";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .product {
+        min-height: 380px;
+    }
+
+        .product:hover {
+            opacity: 0.8;
+            transition: all 0.2s ease-in-out;
+        }
+</style>
+
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_4.jpg" style="background-image: url(/Uploads/TopBanner/TopBanner_4.jpg); background-position: 50% 97px;">
+    <div class="container pt-70 pb-20">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title text-white">YAYINLAR</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container pb-0">
+        <div class="row multi-row-clearfix">
+            <div class="col-md-12">
+                <div class="products">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-30">
+                            <div class="product">
+                                <div class="product-thumb">
+                                    <img alt="" src="@item.Resim" class="img-responsive img-fullwidth">
+                                    @*<div class="overlay">
+                                            <div class="btn-product-view-details">
+                                                <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#" target="_blank">İncele</a>
+                                            </div>
+                                        </div>*@
+                                </div>
+                                <div class="product-details text-center">
+                                    <a href="#"><h5 class="product-title">@item.Ad</h5></a>
+                                    <div class="price">
+                                        @if (@item.EskiFiyat.HasValue)
+                                        {
+                                            <del><span class="amount">₺ @item.EskiFiyat.Value.ToString(System.Globalization.CultureInfo.GetCultureInfo("tr-TR"))</span></del>
+                                        }
+
+                                        @if (@item.YeniFiyat.HasValue)
+                                        {
+                                            <ins><span class="amount">₺ @item.YeniFiyat.Value.ToString(System.Globalization.CultureInfo.GetCultureInfo("tr-TR"))</span></ins>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

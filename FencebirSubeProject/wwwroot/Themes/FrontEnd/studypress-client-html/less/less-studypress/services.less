@@ -1,0 +1,39 @@
+/*
+ * Services.less
+ * -----------------------------------------------
+*/
+.service-block {
+  margin: 0 auto 30px;
+  max-width: 400px;
+  &:hover .thumb .desc {
+    bottom: 0;
+  }
+  .thumb {
+    overflow: hidden;
+    position: relative;
+
+    .price {
+      right: -1px;
+      padding: 5px 10px;
+      position: absolute;
+      top: -1px;
+    }
+
+    .desc {
+      bottom: -31%;
+      padding: 10px 6px 5px 20px;
+      position: absolute;
+      .transition(all 400ms ease-in-out 0s);
+      width: 100%;
+      p {
+        color: @white-base;
+        font-size: 13px;
+      }
+    }    
+  }
+
+  .content {
+    border: 1px solid @gray-lighter;
+    padding: 12px 20px 20px;
+  }
+}

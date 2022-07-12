@@ -1,0 +1,146 @@
+/*
+ * Form.less
+ * -----------------------------------------------
+*/
+
+/* -------- Form ---------- */
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
+	font-size: 14px;
+}
+.form-control {
+	border-radius: 0;
+	box-shadow: none;
+	height: 45px;
+}
+label {
+	font-weight: normal;
+}
+.form-control:focus, form input[type="text"]:focus, form input[type="email"]:focus, form input[type="number"]:focus, form input[type="url"]:focus, form input[type="search"]:focus, form input[type="tel"]:focus, form input[type="password"]:focus, form input[type="date"]:focus, form input[type="color"]:focus, form select:focus, form textarea:focus {
+	color: @black-444;
+	border-color: fade(@black, 30%);
+	-webkit-box-shadow: 0 0 3px fade(@black, 10%);
+	-moz-box-shadow: 0 0 3px fade(@black, 10%);
+	box-shadow: 0 0 3px fade(@black, 10%);
+	outline: none;
+}
+.form-transparent {
+	.form-control {
+		background: transparent;
+		color: @white-f7;
+	}
+	.form-control:focus, form input[type="text"]:focus, form input[type="email"]:focus, form input[type="number"]:focus, form input[type="url"]:focus, form input[type="search"]:focus, form input[type="tel"]:focus, form input[type="password"]:focus, form input[type="date"]:focus, form input[type="color"]:focus, form select:focus, form textarea:focus {
+		color: @white-f7;
+	}
+}
+.form-transparent textarea.form-control,
+.form-white textarea.form-control {
+  height: 150px;
+}
+.form-white .form-control {
+	background: @white-base;
+}
+.form-transparent.form-line .form-control {
+  border: none;
+  border-bottom: 1px solid @gray-silver;
+  padding-left: 0;
+}
+ .form-transparent.form-line textarea.form-control {
+ 	height: 70px;
+ }
+ form label {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+ /* form error */
+ form .form-control.error {
+ 	border: 2px solid #ee163b;
+ }
+ form .error {
+ 	color: #ee163b;
+ }
+
+/* -------- Donation Form ---------- */
+ .donation-form .form-group label.radio-inline {
+ 	color: @gray-base;
+ }
+
+ /*-------- form-text-white ---------*/
+ .form-text-white {
+ 	.form-group {
+ 		label {
+ 			color: @white-base;
+ 		}
+ 	}
+ }
+
+ /*-------- ddslick form ---------*/
+ .dd-container,
+ .dd-select {
+	width: 100%;
+}
+ .dd-options {
+	width: 100%;
+}
+.ui-widget-content {
+  background: #2aa1c0 none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  color: #333;
+  height: 36px;
+  margin-top: 6px;
+}
+.ui-widget-header {
+  background: #fff none repeat scroll 0 0;
+}
+.ui-state-default {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #202c45;
+  font-weight: normal;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+  border-radius: 0;
+}
+.ui-state-active {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.ui-slider .ui-slider-handle {
+  height: 50px;
+  width: 20px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+  margin-left: -1px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+  top: -9px;
+}
+
+.control__indicator {
+  height: 24px;
+  width: 24px;
+}
+.control--checkbox .control__indicator::after {
+  height: 10px;
+  left: 10px;
+  top: 5px;
+  width: 6px;
+}
+.control.control--checkbox,
+.control.control--radio {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  margin-right: 12px;
+  padding-left: 36px;
+}
+.control--radio .control__indicator::after {
+  height: 6px;
+  left: 9px;
+  top: 9px;
+  width: 6px;
+}

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model AnasayfaViewModel
+
+<partial name="/Views/Home/Partials/Slider.cshtml" model="Model.BannerList" />
+
+<partial name="/Views/Home/Partials/Duyuru.cshtml" model="Model.DuyuruList"/>
+
+<partial name="/Views/Home/Partials/HosgeldinBilgi.cshtml" model="Model.HosgeldinBilgiData"/>
+
+<partial name="/Views/Home/Partials/VideoBilgi.cshtml" model="Model.VideoBilgiData"/>
+
+<partial name="/Views/Home/Partials/SubeBilgi.cshtml" model="Model.SubeList" />
+
+<partial name="/Views/Home/Partials/TemsilciBilgi.cshtml" model="Model.TemsilciList"/>
+
+<partial name="/Views/Home/Partials/OgrenciYorum.cshtml" model="Model.OgrenciYorumList"/>
+
+<partial name="/Views/Home/Partials/OgretmenBilgi.cshtml" model="Model.OgretmenList"/>
+
+<partial name="/Views/Home/Partials/Galeri.cshtml" model="Model.GaleriList"/>
+
+<partial name="/Views/Home/Partials/BlogBilgi.cshtml" model="Model.BlogList"/>

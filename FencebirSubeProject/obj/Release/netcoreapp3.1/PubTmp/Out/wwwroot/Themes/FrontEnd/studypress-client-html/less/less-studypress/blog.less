@@ -1,0 +1,139 @@
+
+/*
+ * blog.less 
+ * -----------------------------------------------
+*/
+
+.post {
+
+	position: relative;
+	.entry-title {
+		margin-top: 0;
+	}
+
+	.entry-content {
+		position: relative;
+		background: @white-f8;
+		padding: 15px;
+	}
+	.entry-date {
+		font-size: 13px;
+	}
+
+	.entry-meta {
+		&.meta-absolute {
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+
+			i {
+				display: block;
+				font-size: 28px;
+			}
+
+			span a {
+				color: #454545;
+			    font-size: 12px;
+			    font-style: italic;
+			    letter-spacing: 2px;
+			    margin-right: 5px;
+			}
+		}
+	}
+	&.media-post  {
+
+		.post-thumb {
+			float: left;    
+			margin: 0 10px 10px 0;
+		}
+	}
+
+	.post-thumb {
+		.transition(all .2s ease-in-out); 
+	}
+
+	&:hover {
+		.post-thumb {
+		}
+	}
+
+}
+/* -------- Entry-Meta Absolute ---------- */
+.post .entry-header {
+  position: relative;
+  .entry-date {
+	  bottom: -25px;
+	  position: absolute;
+	  right: 10px;
+	  z-index: 2;
+	}
+}
+.post .entry-meta.meta-absolute {
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.post .entry-meta.meta-absolute i {
+	display: block;
+	font-size: 28px;
+}
+/*
+ * Blog Style 2
+ * -----------------------------------------------
+*/
+.post.style2,.post.style3 {
+	position: relative;
+	overflow: hidden;
+	.entry-content {
+		background-color: fade(@black, 80%);
+		bottom: -30px;
+		left: 0;
+		padding: 30px;
+		position: absolute;
+		right: 0;
+		.transition(all 0.3s ease-in-out 0s);
+		
+		.entry-date {
+			font-size: 11px;
+			margin-bottom: 10px;
+		}
+	}
+	&:hover {
+		.entry-content {
+			bottom: 0;
+		}
+		.post-thumb
+				
+		 {
+			.scale(1);
+		}
+	}
+
+}
+
+.blog-pull-right {
+  float: right;
+  }
+  
+@media only screen and (max-width: 767px) {
+  .blog-pull-right {
+    float: none;
+  }
+}
+
+.featured-blog {
+	overflow: hidden;
+	position: relative;
+}
+.featured-blog-details {
+	bottom: -18%;
+	padding: 30px;
+	position: absolute;
+	transition: all 400ms ease-in-out 0s;
+	width: 100%;
+}
+.featured-blog:hover .featured-blog-details {
+  bottom: 0;
+}

@@ -1,0 +1,196 @@
+﻿@model MesajAramaViewModel
+@{var kullaniciGirisModel = ViewBag.KullaniciGirisData as KullaniciGirisModel; }
+@{
+    ViewData["Title"] = "BilgiTalepArama";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row flex-column-fluid container">
+    <div class="main d-flex flex-column flex-row-fluid">
+        <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+            <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">Bilgi Talep Arama</h5>
+
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/Iletisim" class="text-muted">İletişim</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/Iletisim/IletisimTalepArama" class="text-muted">İletişim Talep Arama</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <a href="/Admin/Iletisim/IletisimTalepArama" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload">
+                        <i class="ki ki-reload icon-nm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content flex-column-fluid" id="kt_content">
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon">
+                            <i class="flaticon2-delivery-package text-primary"></i>
+                        </span>
+                        <h3 class="card-label">Filtreleme Kriterleri</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form id="_form" class="kt-form kt-form--fit mb-15">
+                        <div class="row mb-6">
+                            <div class="col-lg-3 mb-lg-0 mb-6">
+                                <label>Şube &amp; Temsilci:</label>
+                                <select asp-for="@Model.SubeId" class="form-control datatable-input" disabled="@(kullaniciGirisModel.SubeId!=1 ? "disabled" : null)">
+                                    <option value="">Tümü</option>
+                                    @foreach (var item in Model.SubeList)
+                                    {
+                                        <option value="@item.SubeId">@item.SubeAdi</option>
+                                    }
+                                </select>
+                                @if (kullaniciGirisModel.SubeId != 1)
+                                {
+                                    <input asp-for="@Model.SubeId" type="hidden" />
+                                }
+                            </div>
+                            <div class="col-lg-3 mb-lg-0 mb-6">
+                                <label>Mesaj İçerik:</label>
+                                <input asp-for="@Model.MesajIcerik" type="text" class="form-control datatable-input" />
+                            </div>
+                        </div>
+                        <div class="row mt-8">
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-primary btn-primary--icon" onclick="javascript: ara();">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                        <span>Ara</span>
+                                    </span>
+                                </button>&#160;&#160;
+                                <button type="button" class="btn btn-secondary btn-secondary--icon" onclick='location.reload();'>
+                                    <span>
+                                        <i class="la la-close"></i>
+                                        <span>Temizle</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <table id="dtArama" class="table table-bordered table-hover table-checkable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Şube</th>
+                                <th>Mesaj İçerik</th>
+                                <th>Gönderim Tarih</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Şube</th>
+                                <th>Mesaj İçerik</th>
+                                <th>Gönderim Tarih</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function ara() {
+            var data = $('#_form').serializeObject();
+
+            $('#dtArama').DataTable().destroy();
+
+            var table = $('#dtArama').DataTable({
+                processing: true,
+                serverSide: true,
+                filter: false,
+                responsive: true,
+                orderMulti: false,
+                autoWidth: false,
+                ordering: false,
+                //fixedColumns: true,
+                ajax: {
+                    url: '/Admin/Iletisim/IletisimTalepArama',
+                    type: 'post',
+                    datatype: "json",
+                    dataSrc: "data",
+                    defaultContent: "",
+                    data: data,
+                    beforeSend: function () {
+                        showLoading('dtArama');
+                    },
+                    complete: function () {
+                        hideLoading('dtArama');
+                    },
+                    error: function (error) {
+                        hideLoading('dtArama');
+
+                        Swal.fire(
+                            "Hata",
+                            "İşlem sırasında hata oluştu. " + error,
+                            "error"
+                        )
+                    }
+                },
+                columns: [
+                    { data: 'MesajId', defaultContent: '' },
+                    { data: 'SubeAdi', defaultContent: '' },
+                    { data: 'MesajIcerik', defaultContent: '' },
+                    { data: 'GonderimTarihi', defaultContent: '' },
+                ],
+                columnDefs: [
+                    { targets: 0, width: '5%' },
+                    { targets: 1, width: '15%' },
+                    { targets: 2, width: '70%' },
+                    { targets: 3, width: '10%' },
+                ],
+                dom: `<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>
+                          <'row'<'col-sm-12'tr>>
+                          <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+                lengthMenu: [[5, 25, 50], [5, 25, 50]],
+                buttons: [
+                    {
+                        extend: 'print',
+                        text: 'Yazdır'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'Pdf'
+                    }
+                ],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json'
+                }
+            });
+        };
+
+        function showLoading(id) {
+            KTApp.block(document.getElementById(id), {
+                overlayColor: '#000000',
+                state: 'danger',
+                message: 'Lütfen bekleyin...'
+            });
+        };
+
+        function hideLoading(id) {
+            KTApp.unblock(document.getElementById(id));
+        };
+    </script>
+}

@@ -1,0 +1,20 @@
+﻿@model FranchiseViewModel
+@{
+    ViewData["Title"] = "Franchise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="bg-lighter">
+    <div class="container pb-60">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-7">
+                    @Html.Raw(Model.FranchiseMetin.IcerikMetin)
+                </div>
+                <div class="col-md-5">
+                    <partial name="/Views/Franchise/Partials/FranchiseTalep.cshtml" model="@Model.FranchiseTalepData" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

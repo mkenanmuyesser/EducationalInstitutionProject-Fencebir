@@ -1,0 +1,42 @@
+﻿@model List<DuyuruViewModel>
+
+<link href="/Themes/FrontEnd/awNotices/css/awNotices.css" rel="stylesheet" />
+
+<section class="awNotices bg-lighter mt-10 ml-5 mr-5">
+    @{int sayac = 0; }
+
+    @foreach (var item in Model)
+    {
+        switch (sayac % 5)
+        {
+            default:
+            case 0:
+                @Html.Raw("<a notice-color='orange' href='#'>");
+                break;
+            case 1:
+                @Html.Raw("<a notice-color='red' href='#'>");
+                break;
+            case 2:
+                @Html.Raw("<a notice-color='blue' href='#'>");
+                break;
+            case 3:
+                @Html.Raw("<a notice-color='green' href='#'>");
+                break;
+            case 4:
+                @Html.Raw("<a notice-color='dark' href='#'>");
+                break;
+        }
+
+        <i class="fa fa-bell"></i> <b>@item.Tarih.ToString("dd.MM.yyyy") </b>@item.Icerik
+        @Html.Raw("</a>")
+
+        @(sayac++);
+    }
+</section>
+
+<script type="text/javascript" src="/Themes/FrontEnd/awNotices/js/awNotices.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        awNotices(5000);
+    });
+</script>

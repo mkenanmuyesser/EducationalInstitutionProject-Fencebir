@@ -1,0 +1,16 @@
+﻿@model VideoBilgiViewModel
+
+<section id="event">
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-7">
+                    @Html.Raw(Model.VideoBilgiEmbedCode.IcerikMetin)
+                </div>
+                <div class="col-md-5 pb-sm-20">
+                    @Html.Raw(Model.VideoBilgiMetni.IcerikMetin)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

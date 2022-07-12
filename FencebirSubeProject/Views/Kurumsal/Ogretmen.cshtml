@@ -1,0 +1,79 @@
+﻿@model List<OgretmenViewModel>
+
+@{
+    ViewData["Title"] = "Öğretmenlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+}
+
+<style type="text/css">
+    .thumb:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_2.jpg">
+    <div class="container pt-70 pb-20">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    @if (controller == "Kurumsal")
+                    {
+                        <h2 class="title text-white">AİLEMİZ</h2>
+                    }
+                    else
+                    {
+                        <h2 class="title text-white">ÖĞRETMENLER</h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="team">
+    <div class="container">
+        <div class="row mtli-row-clearfix">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-3 sm-text-center mb-30 mb-sm-30">
+                    <div class="team maxwidth400">
+                        <div class="thumb"><img class="img-fullwidth" src="@item.Resim" alt=""></div>
+                        <div class="content border-1px border-bottom-theme-color-2-2px p-15 bg-light clearfix">
+                            <h4 class="name text-theme-color-2 mt-0">@item.AdSoyad - <small>@item.Unvan</small></h4>
+                            <p class="mb-20">@item.Aciklama</p>
+                            <ul class="styled-icons icon-dark icon-circled icon-theme-colored icon-sm flip" style="text-align:center;">
+                                @if (!string.IsNullOrEmpty(item.FacebookHesapUrl))
+                                {
+                                    <li><a target="_blank" href="@item.FacebookHesapUrl"><i class="fa fa-facebook"></i></a></li>
+                                }
+
+                                @if (!string.IsNullOrEmpty(item.TwitterHesapUrl))
+                                {
+                                    <li><a target="_blank" href="@item.TwitterHesapUrl"><i class="fa fa-twitter"></i></a></li>
+                                }
+
+                                @if (!string.IsNullOrEmpty(item.InstagramHesapUrl))
+                                {
+                                    <li><a target="_blank" href="@item.InstagramHesapUrl"><i class="fa fa-instagram"></i></a></li>
+                                }
+
+                                @if (!string.IsNullOrEmpty(item.WhatsappHesapUrl))
+                                {
+                                    <li><a target="_blank" href="@item.WhatsappHesapUrl"><i class="fa fa-whatsapp"></i></a></li>
+                                }
+
+                                @if (!string.IsNullOrEmpty(item.YoutubeHesapUrl))
+                                {
+                                    <li><a target="_blank" href="@item.YoutubeHesapUrl"><i class="fa fa-youtube"></i></a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+﻿@model List<GaleriViewModel>
+@{
+    ViewData["Title"] = "Galeri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .gallery-item:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_4.jpg" style="background-image: url(/Uploads/TopBanner/TopBanner_4.jpg); background-position: 50% 97px;">
+    <div class="container pt-70 pb-20">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title text-white">GALERİ</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="gallery-isotope grid-5 gutter-small clearfix" data-lightbox="gallery">
+                        @foreach (var item in Model)
+                        {
+                            <div class="gallery-item">
+                                <a href="@item.Resim" data-lightbox="gallery-item" title="@item.Tarih.ToString("dd.MM.yyy") - @item.Aciklama"><img src="@item.Resim" alt=""></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

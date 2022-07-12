@@ -1,0 +1,52 @@
+﻿@model List<BlogViewModel>
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var bloglink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<style type="text/css">
+    .thumb:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section id="blog" class="bg-lighter">
+    <div class="container">
+        <div class="section-title mb-10">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">FENCEBİR <span class="text-theme-color-2 font-weight-400">BLOG</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-3 col-lg-3">
+                        <article class="post clearfix maxwidth600 mb-30">
+                            <div class="entry-header">
+                                <a href="@(bloglink)/BlogDetay?bdId=@item.BlogId">
+                                    <div class="post-thumb thumb"> <img src="@item.Resim" alt="" class="img-responsive img-fullwidth"> </div>
+                                </a>
+                            </div>
+                            <div class="entry-content border-1px p-20">
+                                <h5 class="entry-title mt-0 pt-0"><a href="#">@item.Baslik</a></h5>
+                                <ul class="list-inline entry-date font-12 mt-5">
+                                    <li class="pr-0"><a class="text-theme-colored" href="">@item.YayinTarihi.ToString("dd.MM.yyyy")</a></li>
+                                </ul>
+                                <p class="text-left mb-20 mt-15 font-13">@item.KisaIcerik</p>
+                                <a class="btn btn-dark btn-theme-colored btn-xs btn-flat mt-0" href="@(bloglink)/BlogDetay?bdId=@item.BlogId">Devamı için...</a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

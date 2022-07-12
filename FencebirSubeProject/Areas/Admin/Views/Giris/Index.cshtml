@@ -1,0 +1,120 @@
+﻿@model KullaniciGirisViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_RootLayout.cshtml";
+}
+
+<div class="d-flex flex-column flex-root">
+    <div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('/Themes/Admin/dist/assets/media/bg/bg-3.jpg');">
+            <div class="login-form text-center p-7 position-relative overflow-hidden">
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="/Uploads/Site/only_logo.png" class="max-h-75px" alt="" />
+                    </a>
+                </div>
+
+                <div class="login-signin">
+                    <div class="mb-20">
+                        <h3>Yönetici Girişi</h3>
+                        <div class="text-muted font-weight-bold">Lütfen aşağıdaki bilgileri giriniz:</div>
+                    </div>
+                    <form class="form" id="_form" action="/Admin" method="post">
+                        <input asp-for="@Model.ReturnUrl" type="hidden" />
+                        <div class="form-group mb-5">
+                            <input asp-for="@Model.Eposta" type="text" class="form-control h-auto form-control-solid py-4 px-8" placeholder="E-posta" autocomplete="off" />
+                        </div>
+                        <div class="form-group mb-5">
+                            <input asp-for="@Model.Sifre" type="password" class="form-control h-auto form-control-solid py-4 px-8" placeholder="Şifre" autocomplete="off" />
+                        </div>
+                        <button id="btnGiris" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Giriş</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        FormValidation.formValidation(document.getElementById('_form'),
+            {
+                fields: {
+                    Eposta: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            emailAddress: {
+                                message: 'Yanlış E-posta Formatı.'
+                            }
+                        }
+                    },
+                    Sifre: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    bootstrap: new FormValidation.plugins.Bootstrap({
+                        eleInvalidClass: '',
+                        eleValidClass: '',
+                    })
+                }
+            }).on('core.form.valid', function () {
+                var data = $("#_form").serialize();
+
+                $.ajax({
+                    dataType: 'json',
+                    type: "post",
+                    url: "/Admin/Giris/Index",
+                    data: data,
+                    beforeSend: function () {
+                        showLoading('_form');
+                    },
+                    success: function (result) {
+                        hideLoading('_form');
+
+                        if (result.message == "success") {
+                            window.location.href = result.returnUrl;
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Kullanıcı adı veya şifre hatalı!',
+                                text: '',
+                                confirmButtonText: "Tamam",
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        hideLoading('_form');
+
+                        Swal.fire(
+                            "Hata",
+                            "İşlem sırasında hata oluştu. " + error,
+                            "error"
+                        )
+                    }
+                });
+            });
+
+        function showLoading(id) {
+            KTApp.block(document.getElementById(id), {
+                overlayColor: '#000000',
+                state: 'danger',
+                message: 'Lütfen bekleyin...'
+            });
+        };
+
+        function hideLoading(id) {
+            KTApp.unblock(document.getElementById(id));
+        };
+    </script>
+
+}

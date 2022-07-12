@@ -1,0 +1,34 @@
+﻿@model List<GaleriViewModel>
+
+<style type="text/css">
+    .gallery-item:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section id="gallery">
+    <div class="container">
+        <div class="section-title mb-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="mt-0 text-uppercase text-theme-colored title line-bottom line-height-1">FENCEBİR<span class="text-theme-color-2 font-weight-400"> GALERİ</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="gallery-isotope grid-4 gutter-small clearfix" data-lightbox="gallery">
+                        @foreach (var item in Model)
+                        {
+                            <div class="gallery-item">
+                                <a href="@item.Resim" data-lightbox="gallery-item" title="@item.Tarih.ToString("dd.MM.yyy") - @item.Aciklama"><img src="@item.Resim" alt=""></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

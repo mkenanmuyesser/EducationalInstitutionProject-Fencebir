@@ -1,0 +1,64 @@
+﻿@model AnasayfaViewModel
+@{
+    ViewData["Title"] = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var bloglink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<partial name="/Views/Kurumsal/Partials/Slider.cshtml" model="Model.BannerList" />
+
+@if (Model.DuyuruList.Any())
+{
+    <partial name="/Views/Kurumsal/Partials/Duyuru.cshtml" model="Model.DuyuruList" />
+}
+
+<partial name="/Views/Kurumsal/Partials/HosgeldinBilgi.cshtml" model="Model.HosgeldinBilgiData" />
+@{Model.Durum++;}
+
+<partial name="/Views/Kurumsal/Partials/VideoBilgi.cshtml" model="Model.VideoBilgiData" />
+@{Model.Durum++;}
+
+@if (controller == "Kurumsal")
+{
+    if (Model.SubeList.Any())
+    {
+        <partial name="/Views/Kurumsal/Partials/SubeBilgi.cshtml" model="Model.SubeList" />
+        Model.Durum++;
+    }
+
+    if (Model.TemsilciList.Any())
+    {
+        <partial name="/Views/Kurumsal/Partials/TemsilciBilgi.cshtml" model="Model.TemsilciList" />
+        Model.Durum++;
+    }
+}
+
+@if (Model.OgrenciYorumList.Any())
+{
+    <partial name="/Views/Kurumsal/Partials/OgrenciYorum.cshtml" model="Model.OgrenciYorumList" />
+    Model.Durum++;
+}
+
+@if (Model.OgretmenList.Any())
+{
+    <partial name="/Views/Kurumsal/Partials/OgretmenBilgi.cshtml" model="Model.OgretmenList" />
+    Model.Durum++;
+}
+
+@if (Model.GaleriList.Any())
+{
+    <partial name="/Views/Kurumsal/Partials/Galeri.cshtml" model="Model.GaleriList" />
+    Model.Durum++;
+}
+
+@if (Model.BlogList.Any())
+{
+    <partial name="/Views/Kurumsal/Partials/BlogBilgi.cshtml" model="Model.BlogList" />
+    Model.Durum++;
+}

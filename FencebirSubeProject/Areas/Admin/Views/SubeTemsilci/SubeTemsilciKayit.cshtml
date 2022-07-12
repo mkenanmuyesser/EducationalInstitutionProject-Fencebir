@@ -1,0 +1,771 @@
+﻿@model SubeKayitViewModel
+@{var kullaniciGirisModel = ViewBag.KullaniciGirisData as KullaniciGirisModel; }
+@{
+    ViewData["Title"] = "SubeTemsilciKayit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row flex-column-fluid container">
+    <div class="main d-flex flex-column flex-row-fluid">
+        <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+            <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">Şube &amp; Temsilci Kayıt</h5>
+
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/SubeTemsilci" class="text-muted">Şube &amp; Temsilci</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/SubeTemsilci/SubeTemsilciKayit" class="text-muted">Şube &amp; Temsilci Kayıt</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <a href="/Admin/SubeTemsilci/SubeTemsilciKayit" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload">
+                        <i class="ki ki-reload icon-nm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content flex-column-fluid" id="kt_content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h3 class="card-title">Kayıt Alanları</h3>
+                            <div class="card-toolbar">
+                                <div class="example-tools justify-content-center">
+                                    <span class="example-copy" data-toggle="tooltip" title="Copy code" style="visibility:hidden"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="_form" class="form" enctype="multipart/form-data">
+                            <input asp-for="@Model.SubeId" type="hidden" />
+
+                            <div class="card-body">
+                                @if (Model.SubeId == 1)
+                                {
+                                    <input asp-for="@Model.SubeTipId" type="hidden" />
+                                    <input asp-for="@Model.SubeSehirId" type="hidden" />
+                                    <input asp-for="@Model.SubeAdi" type="hidden" />
+                                    <input asp-for="@Model.SubeAttribute" type="hidden" />
+                                }
+                                else
+                                {
+                                    <div class="form-group row">
+                                        <div class="col-lg-6">
+                                            <label><span class="text-danger">* </span>Şube Tip:</label>
+                                            <div class="input-group">
+                                                <select asp-for="@Model.SubeTipId" class="form-control selectpicker" disabled="@(kullaniciGirisModel.SubeId!=1 ? "disabled" : null)">
+                                                    <option value="">Seçiniz</option>
+                                                    @foreach (var item in Model.SubeTipList)
+                                                    {
+                                                        <option value="@item.SubeTipId">@item.SubeTipAdi</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            @if (kullaniciGirisModel.SubeId != 1)
+                                            {
+                                                <input asp-for="@Model.SubeTipId" type="hidden" />
+                                            }
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label><span class="text-danger">* </span>Şehir:</label>
+                                            <div class="input-group">
+                                                <select asp-for="@Model.SubeSehirId" class="form-control selectpicker" disabled="@(kullaniciGirisModel.SubeId!=1 ? "disabled" : null)">
+                                                    <option value="">Seçiniz</option>
+                                                    @foreach (var item in Model.SubeSehirList)
+                                                    {
+                                                        <option value="@item.SubeSehirId">@item.SubeSehirAdi</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            @if (kullaniciGirisModel.SubeId != 1)
+                                            {
+                                                <input asp-for="@Model.SubeSehirId" type="hidden" />
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-6">
+                                            <label><span class="text-danger">* </span>Şube Adı:</label>
+                                            <div class="input-group">
+                                                <input asp-for="@Model.SubeAdi" type="text" class="form-control" disabled="@(kullaniciGirisModel.SubeId!=1 ? "disabled" : null)" />
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-bookmark-o"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            @if (kullaniciGirisModel.SubeId != 1)
+                                            {
+                                                <input asp-for="@Model.SubeAdi" type="hidden" />
+                                            }
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label><span class="text-danger">* </span>Şube Kodu:</label>
+                                            <div class="input-group">
+                                                <input asp-for="@Model.SubeAttribute" type="text" class="form-control" disabled="@(kullaniciGirisModel.SubeId!=1 ? "disabled" : null)" />
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-bookmark-o"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            @if (kullaniciGirisModel.SubeId != 1)
+                                            {
+                                                <input asp-for="@Model.SubeAttribute" type="hidden" />
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Açıklama:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Aciklama" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label><span class="text-danger">* </span>Adres:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Adres" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label><span class="text-danger">* </span>Telefon 1:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Telefon1" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Telefon 2:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Telefon2" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Fax 1:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Fax1" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Fax 2:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Fax2" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label><span class="text-danger">* </span>E-posta:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Eposta" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Facebook:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.FacebookHesapUrl" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Instagram:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.InstagramHesapUrl" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Twitter:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.TwitterHesapUrl" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Whatsapp:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.WhatsappHesapUrl" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Youtube:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.YoutubeHesapUrl" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>G. Eposta Tanım:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaTanim" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>G. Eposta Kullanıcı Adı:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaKullaniciAdi" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>G. Eposta Şifre:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaSifre" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label>G. Eposta Host:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaHost" type="text" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>G. Eposta Port:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaPort" type="number" class="form-control" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-bookmark-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>G. Eposta SSL:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaSsl" data-switch="true" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Aktif" data-off-text="Pasif" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>G. Eposta Aktif?:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.GonderilecekEpostaAktifMi" data-switch="true" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Aktif" data-off-text="Pasif" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-2">
+                                        <label>Logo:</label>
+                                        <div class="input-group">
+                                            <img id="imgResim" src="@Model.Resim" style="max-width:125px;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Logo:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.Dosya" class="form-control" type="file" accept="image/*">
+                                        </div>
+                                    </div>
+                                    @if (kullaniciGirisModel.SubeId == 1)
+                                    {
+                                        <div class="col-lg-3">
+                                            <label>Sıra:</label>
+                                            <div class="input-group">
+                                                <input asp-for="@Model.Sira" class="form-control" type="number">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-sort-numeric-down"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="@Model.Sira" type="hidden" />
+                                    }
+
+                                    @if (Model.SubeId == 1)
+                                    {
+                                        <input asp-for="@Model.AktifMi" type="hidden" />
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-3">
+                                            <label>Aktif Mi?:</label>
+                                            <div class="input-group">
+                                                <input asp-for="@Model.AktifMi" data-switch="true" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Evet" data-off-text="Hayır" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        @if (Model.SubeId > 0)
+                                        {
+                                            <button id="btnGuncelle" type="submit" class="btn btn-success mr-2">Güncelle</button>
+                                        }
+                                        else
+                                        {
+                                            <button id="btnKaydet" type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                                        }
+                                        <button type="button" class="btn btn-secondary" onclick='location.reload();'>İptal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        FormValidation.formValidation(document.getElementById('_form'),
+            {
+
+                fields: {
+                   @if (Model.SubeId != 1)
+                {
+                       <text>
+                        SubeTipId:
+                            {
+                            validators:
+                                {
+                                notEmpty:
+                                    {
+                                    message: 'Zorunlu Alan.'
+                                    }
+                                }
+                            },
+                            SubeSehirId:
+                            {
+                            validators:
+                                {
+                                notEmpty:
+                                    {
+                                    message: 'Zorunlu Alan.'
+                                    }
+                                }
+                            },
+                            SubeAdi:
+                            {
+                            validators:
+                                {
+                                notEmpty:
+                                    {
+                                    message: 'Zorunlu Alan.'
+                                    },
+                                    stringLength:
+                                    {
+                                    max: 100,
+                                        message: 'Karakter Sınırı Aşıldı.'
+                                    }
+                                }
+                            },
+                            SubeAttribute:
+                            {
+                            validators:
+                                {
+                                notEmpty:
+                                    {
+                                    message: 'Zorunlu Alan.'
+                                    },
+                                    stringLength:
+                                    {
+                                    max: 100,
+                                        message: 'Karakter Sınırı Aşıldı.'
+                                    }
+                                }
+                            },
+                    </text>
+	                }
+                    Aciklama: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Adres: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            stringLength: {
+                                max: 1000,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Telefon1: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            stringLength: {
+                                max: 50,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Telefon2: {
+                        validators: {
+                            stringLength: {
+                                max: 50,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Fax1: {
+                        validators: {
+                            stringLength: {
+                                max: 50,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Fax2: {
+                        validators: {
+                            stringLength: {
+                                max: 50,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    Eposta: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            },
+                            emailAddress: {
+                                message: 'Yanlış E-posta Formatı.'
+                            }
+                        }
+                    },
+                    FacebookHesapUrl: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    InstagramHesapUrl: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    TwitterHesapUrl: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    WhatsappHesapUrl: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    YoutubeHesapUrl: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    GonderilecekEpostaTanim: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    GonderilecekEpostaKullaniciAdi: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    GonderilecekEpostaSifre: {
+                        validators: {
+                            stringLength: {
+                                max: 50,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    GonderilecekEpostaHost: {
+                        validators: {
+                            stringLength: {
+                                max: 100,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    },
+                    GonderilecekEpostaPort: {
+                        validators: {
+                            digits: {
+                                min: 0,
+                                max: 10000,
+                                message: 'Sadece 0\'dan Büyük Rakam.'
+                            }
+                        }
+                    },
+                    Sira: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            digits: {
+                                min: 0,
+                                message: 'Sadece 0\'dan Büyük Rakam.'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    bootstrap: new FormValidation.plugins.Bootstrap({
+                        eleInvalidClass: '',
+                        eleValidClass: '',
+                    })
+                }
+            }).on('core.form.valid', function () {
+                var data = new FormData($('form')[0]);
+
+                $.ajax({
+                    dataType: 'json',
+                    type: "post",
+                    url: "/Admin/SubeTemsilci/SubeTemsilciKayit",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    beforeSend: function () {
+                        showLoading('_form');
+                    },
+                    success: function (result) {
+                        hideLoading('_form');
+
+                        if (result.message == "control") {
+                            if (result.operation == "file") {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Yanlış Dosya Uzantısı!',
+                                    text: '',
+                                    showCloseButton: true,
+                                    confirmButtonText: "Tamam",
+                                    cancelButtonText: "İptal",
+                                });
+                            }
+
+                            if (result.operation == "sameattribute") {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'İşlem Yapılamıyor!',
+                                    text: 'Aynı Şube Kodu Bulunmaktadır.',
+                                    showCloseButton: true,
+                                    confirmButtonText: "Tamam",
+                                    cancelButtonText: "İptal",
+                                });
+                            }
+
+                            if (result.operation =="wrongattribute") {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'İşlem Yapılamıyor!',
+                                    text: 'Yanlış Şube Kodu. Lütfen Boşluk veya Özel Karakter Kullanmayınız.',
+                                    showCloseButton: true,
+                                    confirmButtonText: "Tamam",
+                                    cancelButtonText: "İptal",
+                                });
+                            }
+                        }
+                        else {
+                            if (result.id > 0) {
+                                $('#SubeId').val(result.id);
+
+                                if (result.operation == "insert") {
+                                    $("#btnKaydet").removeClass('btn-primary');
+                                    $("#btnKaydet").addClass('btn-success');
+                                    $("#btnKaydet").html('Güncelle');
+                                    window.history.pushState("", "", "SubeTemsilciKayit/" + result.id);
+                                }
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'İşlem Başarılı!',
+                                    text: '',
+                                    showCloseButton: true,
+                                    confirmButtonText: "Tamam",
+                                    cancelButtonText: "İptal",
+                                });
+                            }
+                            else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'İşlem Sırasında Hata Oluştu!',
+                                    text: '',
+                                    showCloseButton: true,
+                                    confirmButtonText: "Tamam",
+                                    cancelButtonText: "İptal",
+                                });
+                            }
+                        }
+                    },
+                    error: function (err) {
+                        hideLoading('_form');
+
+                        Swal.fire(
+                            "Hata",
+                            "İşlem sırasında hata oluştu. " + error,
+                            "error"
+                        )
+                    }
+                });
+            });
+
+        function showLoading(id) {
+            KTApp.block(document.getElementById(id), {
+                overlayColor: '#000000',
+                state: 'danger',
+                message: 'Lütfen bekleyin...'
+            });
+        };
+
+        function hideLoading(id) {
+            KTApp.unblock(document.getElementById(id));
+        };
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgResim').prop('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $('#imgResim').prop('src', '/Uploads/Site/noimg.png');
+            }
+        }
+
+        $("#Dosya").change(function () {
+            readURL(this);
+        });
+    </script>
+}

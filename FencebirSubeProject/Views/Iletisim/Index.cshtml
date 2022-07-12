@@ -1,0 +1,71 @@
+﻿@model IletisimViewModel
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_6.jpg">
+    <div class="container pt-70 pb-20">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title text-white">İLETİŞİM</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="divider">
+    <div class="container pt-0">
+        <div class="row mb-60 bg-deep">
+            <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center pt-60 pb-60 border-right">
+                    <i class="fa fa-phone font-36 mb-10 text-theme-colored"></i>
+                    <h4>Telefon/Fax</h4>
+                    @if (!string.IsNullOrEmpty(Model.SirketTelefon1))
+                    {
+                        <h6 class="text-gray">Telefon: @Model.SirketTelefon1</h6>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.SirketTelefon2))
+                    {
+                        <h6 class="text-gray">Telefon: @Model.SirketTelefon2</h6>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.SirketFax1))
+                    {
+                        <h6 class="text-gray">Fax: @Model.SirketFax1</h6>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.SirketFax2))
+                    {
+                        <h6 class="text-gray">Fax: @Model.SirketFax2</h6>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center  pt-60 pb-60 border-right">
+                    <i class="fa fa-map-marker font-36 mb-10 text-theme-colored"></i>
+                    <h4>Adres</h4>
+                    <h6 class="text-gray">@Model.SirketAdres</h6>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center  pt-60 pb-60">
+                    <i class="fa fa-envelope font-36 mb-10 text-theme-colored"></i>
+                    <h4>E-posta</h4>
+                    <h6 class="text-gray"><a href="mailto:@Model.SirketEposta">@Model.SirketEposta</a></h6>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-10">
+            <div class="col-md-5">
+                <h4 class="mt-0 mb-30 line-bottom">Bize Ulaşın</h4>
+                <div>
+                    @Html.Raw(Model.SirketMapCode)
+                </div>
+            </div>
+            <div class="col-md-7">
+                <partial name="/Views/Iletisim/Partials/IletisimTalep.cshtml" model="@Model.IletisimTalepData" />
+            </div>
+        </div>
+    </div>
+</section>

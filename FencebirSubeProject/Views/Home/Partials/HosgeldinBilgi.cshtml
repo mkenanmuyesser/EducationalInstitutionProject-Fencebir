@@ -1,0 +1,16 @@
+﻿@model HosgeldinBilgiViewModel
+
+<section class="bg-lighter">
+    <div class="container pb-30 pt-10">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-8">
+                    @Html.Raw(Model.HosgeldinBilgiMetni.IcerikMetin)                    
+                </div>
+                <div class="col-md-4">
+                    <partial name="/Views/Home/Partials/BilgiTalep.cshtml" model="Model.BilgiTalepData" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

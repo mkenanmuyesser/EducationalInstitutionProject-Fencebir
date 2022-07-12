@@ -1,0 +1,144 @@
+/*
+ * campaign.less
+ * -----------------------------------------------
+*/
+
+/* -------- Recent Causes ---------- */
+.campaign .progress-item .progress-bar .percent {
+  background-color: fade(@white-base, 90%);
+  border: 2px solid;
+  color: @black-333;
+  font-size: 10px;
+  line-height: 8px;
+  padding: 8px 5px;
+  position: absolute;
+  right: -10px;
+  text-align: center;
+  top: -7px;
+}
+.campaign .progress-item .progress {
+  background-color: lighten(@black, 93.8%);
+  border-bottom: 1px solid @gray-lightgray;
+  box-shadow: none;
+  height: 15px;
+}
+
+/*
+ * 3.6  -> Causes
+ * -----------------------------------------------
+*/
+.campaign .thumb {
+  position: relative;
+  overflow: hidden;
+}
+.campaign .thumb img {
+  transition: all 500ms ease 0s;
+}
+.campaign:hover .thumb img {
+  transform: scale(1.1);
+}
+.campaign .thumb .overlay-donate-now {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -50px;
+  transition: all 400ms ease 0s;
+}
+.campaign:hover .thumb .overlay-donate-now {
+  top: 10%;
+}
+
+.campaign-overlay {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(3, 3, 3, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 400ms ease-in-out 0s;
+}
+.campaign:hover .thumb .campaign-overlay {
+  opacity: 1;
+}
+.donate-piechart {
+  margin: 0 auto;
+}
+.donate-piechart.piechart-absolute {
+  bottom: -40px;
+  right: 15px;
+  position: absolute;
+}
+.donate-piechart .piechart-block {
+  border-radius: 50%;
+}
+.donate-piechart .piechart canvas {
+  max-height: 70px;
+}
+.donate-piechart .piechart canvas {
+  background-color: @gray-lighter;
+  border-radius: 50%;
+  max-height: 80px;
+}
+.donate-piechart .piechart-block .piechart {
+  min-height: 80px;
+  min-width: 80px;
+}
+.donate-piechart .piechart-block .percent::after {
+  font-size: 12px;
+}
+.donate-piechart .piechart-block .percent {
+  font-size: 18px;
+  line-height: 77px;
+  position: relative;
+}
+
+/*
+ * 3.29  -> Pie Charts
+ * -----------------------------------------------
+*/
+.piechart {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+.piechart .percent {
+  font-size: 18px;
+  z-index: 100;
+  line-height: 60px;
+}
+.piechart .percent:after {
+  content: "%";
+  font-size: 18px;
+}
+.piechart canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+/*
+ * 3.29  -> Featured Causes
+ * -----------------------------------------------
+*/
+.project-conditions {
+  background: @white-f9 none repeat scroll 0 0;
+  padding: 8px;
+}
+.project-conditions li {
+  border-right: 1px solid #d3d3d3;
+  color: #808080;
+  width: 32%;
+}
+.project-conditions li:last-child {
+  border-right: medium none;
+}
+.project-conditions li strong {
+  display: block;
+  font-weight: 600;
+  color: @black-222;
+}

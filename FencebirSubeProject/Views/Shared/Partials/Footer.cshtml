@@ -1,0 +1,111 @@
+﻿@model LayoutViewModel
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var genelLink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<footer id="footer" class="footer divider layer-overlay overlay-dark-9" data-bg-img="/Uploads/TopBanner/TopBanner_7.jpg">
+    <div class="container">
+        <div class="row border-bottom">
+            <div class="col-lg-4">
+                <div class="widget dark">
+                    <img class="mt-5 mb-20" alt="" src="@Model.Logo" style="max-width:250px;">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="widget dark">
+                    <h4 class="widget-title">Site Linkleri</h4>
+                    <ul class="list angle-double-right list-border">
+                        <li><a href="/">Kurumsal</a></li>
+                        @if (controller != "Kurumsal")
+                        {
+                            <li><a href="@(genelLink)">Anasayfa</a></li>
+                        }
+                        <li><a href="@(genelLink)/Iletisim">İletisim</a></li>
+                        <li><a href="@(genelLink)/Hakkimizda">Hakkımızda</a></li>
+                        <li><a href="@(genelLink)/CerezPolitikasi">Çerez Politikası</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="widget dark">
+                    <h5 class="widget-title mb-10">Şimdi Ulaşın</h5>
+                    <ul class="mt-5">
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketAdres))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-map-pin text-theme-color-2 mr-5"></i> <a class="text-gray" href="@(genelLink)/Iletisim">@Model.IletisimData.SirketAdres</a> </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketTelefon1))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" target="_blank" href="tel:@Model.IletisimData.SirketTelefon1">@Model.IletisimData.SirketTelefon1</a> </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketTelefon2))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" target="_blank" href="tel:@Model.IletisimData.SirketTelefon2">@Model.IletisimData.SirketTelefon2</a> </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketFax1))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-fax text-theme-color-2 mr-5"></i> <a class="text-gray" href="">@Model.IletisimData.SirketFax1</a> </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketFax2))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-fax text-theme-color-2 mr-5"></i> <a class="text-gray" href="">@Model.IletisimData.SirketFax2</a> </li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.SirketEposta))
+                        {
+                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href="mailto:@Model.IletisimData.SirketEposta">@Model.IletisimData.SirketEposta</a> </li>
+                        }
+
+                        <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a class="text-gray" target="_blank" href="https://www.fencebir.com">www.fencebir.com</a> </li>
+                    </ul>
+                </div>
+                <div class="widget dark">
+                    <h5 class="widget-title mb-10">Bizi Takip Edin</h5>
+                    <ul class="styled-icons icon-bordered icon-sm">
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.FacebookHesapUrl))
+                        {
+                            <li><a target="_blank" href="@Model.IletisimData.FacebookHesapUrl"><i class="fa fa-facebook"></i></a></li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.TwitterHesapUrl))
+                        {
+                            <li><a target="_blank" href="@Model.IletisimData.TwitterHesapUrl"><i class="fa fa-twitter"></i></a></li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.InstagramHesapUrl))
+                        {
+                            <li><a target="_blank" href="@Model.IletisimData.InstagramHesapUrl"><i class="fa fa-instagram"></i></a></li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.WhatsappHesapUrl))
+                        {
+                            <li><a target="_blank" href="tel:@Model.IletisimData.WhatsappHesapUrl"><i class="fa fa-whatsapp"></i></a></li>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.IletisimData.YoutubeHesapUrl))
+                        {
+                            <li><a target="_blank" href="@Model.IletisimData.YoutubeHesapUrl"><i class="fa fa-youtube"></i></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom bg-black-333">
+        <div class="container pt-20 pb-20">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="font-11 text-black-777 m-0">Copyright &copy;@DateTime.Now.Year FenCebir. Tüm Hakları Saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

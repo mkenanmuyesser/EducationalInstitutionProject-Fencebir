@@ -1,0 +1,106 @@
+﻿@model List<EtkinlikViewModel>
+@{
+    ViewData["Title"] = "Takvim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-content">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_1.jpg">
+        <div class="container pt-70 pb-20">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title text-white">Takvim</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="divider bg-lightest">
+        <div class="container">
+            <div class="section-content text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="takvim"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        function eventsLoad() {
+            var calendarEvents = [];
+
+            @foreach (var item in Model)
+                {
+                    <text>
+                        var data = {
+                            title: '@item.BaslangicZaman.ToString("hh\\:mm")'+'-'+'@item.BitisZaman.ToString("hh\\:mm")'+'<br>'+'@item.EtkinlikKonu'+' (Yer:@item.Yer)' ,
+                            start: '@item.Tarih.ToString("yyyy-MM-dd")' + 'T' + '@item.BaslangicZaman.ToString("hh\\:mm\\:ss")' ,
+                            end: '@item.Tarih.ToString("yyyy-MM-dd")'+'T'+'@item.BitisZaman.ToString("hh\\:mm\\:ss")' ,
+                            //url: 'http://google.com/',
+                            //start: '2020-07-24'
+                            //end: '2020-07-24'
+                            //start: '2016-03-12T10:30:00',
+                            //end: '2016-03-12T12:30:00'
+                         };
+
+                        calendarEvents.push(data);
+                   </text>
+            }
+
+            return calendarEvents;
+        };
+
+
+            $('#takvim').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                buttonText: { today: "Bugün", month: "Ay", week: "Hafta", day: "Gün", list: "Ajanda" },
+                allDayText: "Tüm gün",
+                eventLimitText: "daha fazla",
+                noEventsMessage: "Gösterilecek etkinlik yok",
+                currentText: "bugün",
+                monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                monthNamesShort: ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
+                dayNames: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
+                dayNamesShort: ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                dayNamesMin: ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                weekHeader: "Hf",
+                dateFormat: "dd.MM.yy",
+                firstDay: 1,
+                defaultDate: moment(),
+                selectable: false,
+                selectHelper: false,
+                select: function (start, end) {
+                    var title = prompt('Event Title:');
+                    var eventData;
+                    if (title) {
+                        eventData = {
+                            title: title,
+                            start: start,
+                            end: end
+                        };
+                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                    }
+                    $('#calendar').fullCalendar('unselect');
+                },
+                editable: false,
+                eventLimit: true,
+                axisFormat: 'H:mm',
+                timeFormat: {
+                    agenda: 'H:mm{ - H:mm}'
+                },
+                slotLabelFormat: "HH:mm",
+                events: eventsLoad()
+            });
+    </script>
+}

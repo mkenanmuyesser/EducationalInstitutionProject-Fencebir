@@ -1,0 +1,262 @@
+﻿@model BilgiMetniKayitViewModel
+@{var kullaniciGirisModel = ViewBag.KullaniciGirisData as KullaniciGirisModel; }
+@{
+    ViewData["Title"] = "BilgiMetniKayit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex flex-row flex-column-fluid container">
+    <div class="main d-flex flex-column flex-row-fluid">
+        <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+            <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                <div class="d-flex align-items-center flex-wrap mr-1">
+                    <div class="d-flex align-items-baseline flex-wrap mr-5">
+                        <h5 class="text-dark font-weight-bold my-1 mr-5">Bilgi Metni Güncelleme</h5>
+
+                        <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/Icerik" class="text-muted">İçerik</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/Admin/Icerik/BilgiMetniArama" class="text-muted">Bilgi Metni Arama/Güncelleme</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <a href="/Admin/Icerik/BilgiMetniArama" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload">
+                        <i class="ki ki-reload icon-nm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content flex-column-fluid" id="kt_content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h3 class="card-title">Kayıt Alanları</h3>
+                            <div class="card-toolbar">
+                                <div class="example-tools justify-content-center">
+                                    <span class="example-copy" data-toggle="tooltip" title="" style="visibility:hidden"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="_form" class="form" enctype="multipart/form-data">
+                            <input asp-for="@Model.IcerikId" type="hidden" />
+
+                            <div class="modal fade" id="htmlIcerikModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Html içerik</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @(Model.IcerikMetin)
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Çıkış</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label><span class="text-danger">* </span>Şube &amp; Temsilci:</label>
+                                        <div class="input-group">
+                                            <select asp-for="@Model.SubeId" class="form-control selectpicker" disabled>
+                                                <option value="">Seçiniz</option>
+                                                @foreach (var item in Model.SubeList)
+                                                {
+                                                    <option value="@item.SubeId">@item.SubeAdi</option>
+                                                }
+                                            </select>
+                                            <input asp-for="@Model.SubeId" type="hidden" />
+                                        </div>
+                                        @if (kullaniciGirisModel.SubeId != 1)
+                                        {
+                                            <input asp-for="@Model.SubeId" type="hidden" />
+                                        }
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label><span class="text-danger">* </span>Içerik Tip:</label>
+                                        <div class="input-group">
+                                            <select asp-for="@Model.IcerikTipId" class="form-control selectpicker" disabled>
+                                                <option value="">Seçiniz</option>
+                                                @foreach (var item in Model.IcerikTipList)
+                                                {
+                                                    <option value="@item.IcerikTipId">@item.IcerikTipAdi</option>
+                                                }
+                                            </select>
+                                            <input asp-for="@Model.IcerikTipId" type="hidden" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label><span class="text-danger">* </span>İçerik Metin: </label>
+                                        &nbsp;
+                                        @if (!Model.HtmlIcerik)
+                                        {
+                                            <button type="button" class="btn btn-primary float-right mb-1" data-toggle="modal" data-target="#htmlIcerikModal">
+                                                Html içerik
+                                            </button>
+                                            <div class="input-group border">
+                                                <div id="IcerikMetin" style="width:100%">
+                                                    @Html.Raw(Model.IcerikMetin)
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="input-group border">
+                                                <div id="IcerikMetin" style="width:100%">
+                                                    @(Model.IcerikMetin)
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label>Html İçerik:</label>
+                                        <div class="input-group">
+                                            <input asp-for="@Model.HtmlIcerik" data-switch="true" type="checkbox" data-on-color="success" data-off-color="danger" data-on-text="Evet" data-off-text="Hayır" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button id="btnGuncelle" type="submit" class="btn btn-success mr-2">Güncelle</button>
+                                        <button type="button" class="btn btn-secondary" onclick="window.location.href='/Admin/Icerik/BilgiMetniArama'">İptal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/Themes/Admin/dist/assets/plugins/custom/ckeditor/ckeditor-balloon.bundle.js?v=7.0.5"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BalloonEditor.create(document.querySelector('#IcerikMetin')).then(editor => {
+
+            });
+        });
+
+        FormValidation.formValidation(document.getElementById('_form'),
+            {
+                fields: {
+                    SubeId: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            }
+                        }
+                    },
+                    IcerikTipId: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            }
+                        }
+                    },
+                    IcerikMetin: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Zorunlu Alan.'
+                            },
+                            stringLength: {
+                                max: 5000,
+                                message: 'Karakter Sınırı Aşıldı.'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+                    bootstrap: new FormValidation.plugins.Bootstrap({
+                        eleInvalidClass: '',
+                        eleValidClass: '',
+                    })
+                }
+            }).on('core.form.valid', function () {
+                var data = new FormData($('form')[0]);
+                data.append('IcerikMetin', $('#IcerikMetin').html());
+
+                $.ajax({
+                    dataType: 'json',
+                    type: "post",
+                    url: "/Admin/Icerik/BilgiMetniKayit",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    beforeSend: function () {
+                        showLoading('_form');
+                    },
+                    success: function (result) {
+                        hideLoading('_form');
+
+                        if (result.id > 0) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'İşlem Başarılı!',
+                                text: '',
+                                showCloseButton: true,
+                                confirmButtonText: "Tamam",
+                                cancelButtonText: "İptal",
+                            }).then(function () {
+                                location.reload();
+                            });
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'İşlem Sırasında Hata Oluştu!',
+                                text: '',
+                                showCloseButton: true,
+                                confirmButtonText: "Tamam",
+                                cancelButtonText: "İptal",
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        hideLoading('_form');
+
+                        Swal.fire(
+                            "Hata",
+                            "İşlem sırasında hata oluştu. " + error,
+                            "error"
+                        )
+                    }
+                });
+            });
+
+        function showLoading(id) {
+            KTApp.block(document.getElementById(id), {
+                overlayColor: '#000000',
+                state: 'danger',
+                message: 'Lütfen bekleyin...'
+            });
+        };
+
+        function hideLoading(id) {
+            KTApp.unblock(document.getElementById(id));
+        };
+    </script>
+}

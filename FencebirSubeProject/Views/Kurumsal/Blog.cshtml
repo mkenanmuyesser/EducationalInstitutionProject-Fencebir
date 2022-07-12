@@ -1,0 +1,61 @@
+﻿@model List<BlogViewModel>
+@{
+    ViewData["Title"] = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var bloglink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<style type="text/css">
+    .thumb:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/Uploads/TopBanner/TopBanner_5.jpg">
+    <div class="container pt-70 pb-20">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="title text-white">BLOG</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container mt-30 mb-30 pt-30 pb-0">
+        <div class="row multi-row-clearfix">
+            <div id="blog-posts-wrapper" class="blog-posts">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <article class="post clearfix maxwidth600 mb-30">
+                            <div class="entry-header">
+                                <a href="@(bloglink)/BlogDetay?bdId=@item.BlogId">
+                                    <div class="post-thumb thumb"> <img src="@item.Resim" alt="" class="img-responsive img-fullwidth"> </div>
+                                </a>
+                            </div>
+                            <div class="entry-content border-1px p-20">
+                                <h5 class="entry-title mt-0 pt-0"><a href="#">@item.Baslik</a></h5>
+                                <ul class="list-inline entry-date font-12 mt-5">
+                                    <li class="pr-0"><a class="text-theme-colored" href="">@item.YayinTarihi.ToString("dd.MM.yyyy")</a></li>
+                                </ul>
+                                <p class="text-left mb-20 mt-15 font-13">@item.KisaIcerik</p>
+                                <a class="btn btn-dark btn-theme-colored btn-xs btn-flat mt-0" href="@(bloglink)/BlogDetay?bdId=@item.BlogId">Devamı...</a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

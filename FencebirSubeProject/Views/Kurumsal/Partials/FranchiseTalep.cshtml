@@ -1,0 +1,133 @@
+﻿@model FranchiseTalepViewModel
+
+<div class="p-30 mt-0 bg-theme-colored">
+    <h3 class="title-pattern mt-0"><span class="text-white">Franchise<span class="text-theme-color-2"> Başvuru Formu</span></span></h3>
+    <form id="franchise_form" class="reservation-form mt-20" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <input asp-for="@Model.Ad" class="form-control required" type="text" placeholder="Ad Giriniz...">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <input asp-for="@Model.Soyad" class="form-control required" type="text" placeholder="Soyad Giriniz...">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <input asp-for="@Model.Telefon" class="form-control digits" type="text" placeholder="Telefon Giriniz...">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <input asp-for="@Model.Eposta" class="form-control required" type="email" placeholder="E-posta Giriniz...">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <div class="styled-select">
+                        <select asp-for="@Model.SehirId" class="form-control required">
+                            <option value="">Şehir</option>
+                            @foreach (var item in Model.SehirBilgiList)
+                            {
+                                <option value="@item.SehirId">@item.SehirAdi</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group mb-20">
+                    <div class="styled-select">
+                        <select asp-for="@Model.KurumTipId" class="form-control required">
+                            <option value="">Kurum Türü</option>
+                            @foreach (var item in Model.KurumTipList)
+                            {
+                                <option value="@item.KurumTipId">@item.KurumTipAdi</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <textarea asp-for="@Model.Aciklama" class="form-control required" rows="10" placeholder="Açıklama Giriniz..."></textarea>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <input id="dosya" name="dosya" type="file" accept="image/*" class="button" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group mb-0 mt-10">
+                    <div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>
+                </div>
+            </div>
+            @*<div class="col-sm-4">
+                <div class="form-group mb-0 mt-10">
+                    <a href="/Uploads/Site/kılavuz.pdf" target="_blank" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block">KILAVUZ</a>
+                </div>
+            </div>*@
+            <div class="col-sm-8">
+                <div class="form-group mb-0 mt-10">
+                    <input name="form_botcheck" class="form-control" type="hidden" value="">
+                    <button type="submit" class="btn btn-colored btn-theme-color-2 text-white btn-lg btn-block" data-loading-text="Lütfen Bekleyin...">BAŞVUR</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $("#franchise_form").validate({
+            submitHandler: function (form) {
+                var form_btn = $(form).find('button[type="submit"]');
+                form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+
+                var data = new FormData($('form')[0]);
+
+                $.ajax({
+                    dataType: 'json',
+                    url: '/Kurumsal/FranchiseTalepGonder',
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (data) {
+                        var result = '';
+                        var epostaResult = data.eposta;
+                        var mesajResult = data.mesaj;
+
+                        if (epostaResult == true && mesajResult == true) {
+                            result = 'Mesajınız gönderildi.';
+                        }
+                        else if (mesajResult == true) {
+                            result = 'Mesajınız ulaştırıldı.';
+                        }
+                        else {
+                            result = 'Mesajınız gönderilemedi.';
+                        }
+
+                        form_btn.prop('disabled', false).html('MESAJINIZI GÖNDERİN');
+
+                        if (result != 'Mesajınız gönderilemedi.') {
+                            $('#Ad').val('');
+                            $('#Soyad').val('');
+                            $('#Telefon').val('');
+                            $('#Eposta').val('');
+                            $('#Aciklama').val('');
+                            $('#SehirId').val('');
+                            $('#KurumTipId').val('');
+                            $('#dosya').val('');
+                        }
+
+                        var form_result_div = $('#form-result');
+                        $(form_result_div).html(result).fadeIn('slow');
+                        setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
+                    }
+                });
+            }
+        });
+    </script>
+</div>

@@ -1,0 +1,554 @@
+﻿@{var kullaniciGirisModel = ViewBag.KullaniciGirisData as KullaniciGirisModel; }
+@{ var controller = ViewContext.RouteData.Values["Controller"].ToString();
+    var action = ViewContext.RouteData.Values["Action"].ToString(); }
+
+<div class="header-bottom" id="kt_header_bottom">
+    <div class="container d-flex flex-column">
+        <ul class="header-tabs nav flex-column-auto" role="tablist">
+            <li class="nav-item">
+                <a href="#" class="nav-link @(controller == "Home" ? "active" : "")" data-toggle="tab" data-target="#kt_header_tab_1" role="tab">
+                    <span class="nav-title text-uppercase">KONTROL PANELİ</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link @(controller == "SubeTemsilci" ? "active" : "")" data-toggle="tab" data-target="#kt_header_tab_2" role="tab">
+                    <span class="nav-title text-uppercase">ŞUBE &amp; TEMSİLCİ</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link @(controller == "Kullanici" ? "active" : "")" data-toggle="tab" data-target="#kt_header_tab_3" role="tab">
+                    <span class="nav-title text-uppercase">KULLANICI</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link @(controller == "Icerik" ? "active" : "")" data-toggle="tab" data-target="#kt_header_tab_4" role="tab">
+                    <span class="nav-title text-uppercase">İÇERİK</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link @(controller == "Iletisim" ? "active" : "")" data-toggle="tab" data-target="#kt_header_tab_5" role="tab">
+                    <span class="nav-title text-uppercase">İLETİŞİM</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="header-navs header-navs-left flex-column-fluid" id="kt_header_navs">
+            <div class="tab-content">
+                <div class="tab-pane @(controller == "Home" ? "show active" : "")" id="kt_header_tab_1">
+                    <div id="kt_header_menu1" class="header-menu header-menu-mobile header-menu-layout-default">
+                        <ul class="menu-nav">
+                            <li class="menu-item @(controller == "Home" ? "menu-item-active" : "")" aria-haspopup="true">
+                                <a href="/Admin" class="menu-link">
+                                    <span class="menu-text">Panel Anasayfa</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="kt_header_tab_2" class="tab-pane @(controller == "SubeTemsilci" ? "show active" : "")">
+                    <div id="kt_header_menu2" class="header-menu header-menu-mobile header-menu-layout-default">
+                        <ul class="menu-nav">
+                            <li class="menu-item menu-item-submenu menu-item-rel @(controller == "SubeTemsilci" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Şube İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        @if (kullaniciGirisModel.SubeId == 1)
+                                        {
+                            <li class="menu-item @(action == "SubeTemsilciKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="/Admin/SubeTemsilci/SubeTemsilciKayit" class="menu-link">
+                                    <span class="svg-icon menu-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-text">Şube &amp; Temsilci Kayıt</span>
+                                </a>
+                            </li>}
+                                        <li class="menu-item @(action == "SubeTemsilciArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/SubeTemsilci/SubeTemsilciArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Şube &amp; Temsilci Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="kt_header_tab_3" class="tab-pane @(controller == "Kullanici" ? "show active" : "")">
+                    <div id="kt_header_menu3" class="header-menu header-menu-mobile header-menu-layout-default">
+                        <ul class="menu-nav">
+                            <li class="menu-item menu-item-submenu menu-item-rel @(controller == "Kullanici" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Kullanıcı İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "KullaniciKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Kullanici/KullaniciKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Kullanıcı Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "KullaniciArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Kullanici/KullaniciArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Kullanıcı Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="kt_header_tab_4" class="tab-pane @(controller == "Icerik" ? "show active" : "")">
+                    <div id="kt_header_menu4" class="header-menu header-menu-mobile header-menu-layout-default">
+                        <ul class="menu-nav">
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "EtkinlikKayit" || action=="EtkinlikArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Etkinlik İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "EtkinlikKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/EtkinlikKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Etkinlik Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "EtkinlikArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/EtkinlikArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Etkinlik Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "DuyuruKayit" || action=="DuyuruArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Duyuru İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "DuyuruKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/DuyuruKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Duyuru Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "DuyuruArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/DuyuruArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Duyuru Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "BannerKayit" || action=="BannerArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Banner İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "BannerKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/BannerKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Banner Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "BannerArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/BannerArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Banner Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "BlogKayit" || action=="BlogArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Blog İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "BlogKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/BlogKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Blog Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "BlogArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/BlogArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Blog Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "OgrenciYorumKayit" || action=="OgrenciYorumArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Öğrenci Yorum İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "OgrenciYorumKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/OgrenciYorumKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Öğrenci Yorum Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "OgrenciYorumArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/OgrenciYorumArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Öğrenci Yorum Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "OgretmenKayit" || action=="OgretmenArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Öğretmen İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "OgretmenKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/OgretmenKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Öğretmen Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "OgretmenArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/OgretmenArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Öğretmen Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action == "GaleriKayit" || action=="GaleriArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Galeri İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "GaleriKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/GaleriKayit" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Galeri Kayıt</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "GaleriArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/GaleriArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Galeri Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item menu-item-submenu menu-item-rel @(action=="BilgiMetniKayit" || action=="BilgiMetniArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">Bilgi Metni İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "BilgiMetniArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Icerik/BilgiMetniArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Bilgi Metni Arama</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            @if (kullaniciGirisModel.SubeId == 1)
+                            {
+                <li class="menu-item menu-item-submenu menu-item-rel @(action == "YayinKayit" || action=="YayinArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <span class="menu-text">Yayın İşlemleri</span>
+                        <span class="menu-desc"></span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                        <ul class="menu-subnav">
+                            <li class="menu-item @(action == "YayinKayit" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="/Admin/Icerik/YayinKayit" class="menu-link">
+                                    <span class="svg-icon menu-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-text">Yayın Kayıt</span>
+                                </a>
+                            </li>
+                            <li class="menu-item @(action == "YayinArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="/Admin/Icerik/YayinArama" class="menu-link">
+                                    <span class="svg-icon menu-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-text">Yayın Arama</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>}
+                        </ul>
+                    </div>
+                </div>
+                <div id="kt_header_tab_5" class="tab-pane @(controller == "Iletisim" ? "show active" : "")">
+                    <div id="kt_header_menu5" class="header-menu header-menu-mobile header-menu-layout-default">
+                        <ul class="menu-nav">
+                            <li class="menu-item menu-item-submenu menu-item-rel @(controller == "Iletisim" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="menu-text">İletişim İşlemleri</span>
+                                    <span class="menu-desc"></span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item @(action == "BilgiTalepArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Iletisim/BilgiTalepArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">Bilgi Talep Arama</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item @(action == "IletisimTalepArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                            <a href="/Admin/Iletisim/IletisimTalepArama" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                            <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                <span class="menu-text">İletişim Talep Arama</span>
+                                            </a>
+                                        </li>
+                                        @if (kullaniciGirisModel.SubeId == 1)
+                                        {
+                                            <li class="menu-item @(action == "FranchiseTalepArama" ? "menu-item-active" : "")" data-menu-toggle="hover" aria-haspopup="true">
+                                                <a href="/Admin/Iletisim/FranchiseTalepArama" class="menu-link">
+                                                    <span class="svg-icon menu-icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24" />
+                                                                <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                                                <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="menu-text">Franchise Talep Arama</span>
+                                                </a>
+                                            </li>
+                                    }
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

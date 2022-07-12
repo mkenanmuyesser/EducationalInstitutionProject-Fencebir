@@ -1,0 +1,109 @@
+﻿@model MenuViewModel
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var genelLink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<div id="SinavSonucModal" class="modal-promo-box mfp-hide bg-img-cover" style="max-width:400px; background-color:#FFB600; padding: 10px 60px 50px 60px;">
+    <div>
+        <img src="/Uploads/Site/fcb_logo.png" style="padding: 20px 0px 10px 0px;" />
+    </div>
+    <h3 class="mt-0 text-white">SINAV SONUÇLARI</h3>
+    <br />
+    <a href="http://sonuc.fencebir.com/" target="_blank" class="btn btn-colored btn-theme-colored btn-lg m-0" style="width:170px;">ÖĞRENCİ GİRİŞİ</a>
+    <br />
+    <br />
+    <a href="http://panel.fencebir.com/" target="_blank" class="btn btn-colored btn-theme-colored btn-lg m-0" style="width:170px;">KURUMSAL GİRİŞ</a>
+</div>
+
+<div class="header-nav">
+    <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px">
+        <div class="container">
+            <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
+                <ul class="menuzord-menu">
+                    <li class="@(action == "Index" ? "active" : "")">
+                        <a href="@(controller=="Kurumsal" &&action=="Index"?"/": genelLink)">Anasayfa</a>
+                    </li>
+                    @if (controller == "Kurumsal" && (Model.SubeList.Any() || Model.TemsilciList.Any()))
+                    {
+                        <li>
+                            <a href="javascript:void(0)">Şubeler ve Temsilcilikler</a>
+                            <ul class="dropdown">
+                                @foreach (var item in Model.SubeList)
+                                {
+                                    <li><a href="/Sube/@item.SubeAttribute" target="_blank">@item.SubeAdi <span class="label label-info" style="float:right">Ş</span></a></li>
+                                }
+
+                                @foreach (var item in Model.TemsilciList)
+                                {
+                                    <li><a href="/Temsilci/@item.SubeAttribute" target="_blank">@item.SubeAdi <span class="label label-danger" style="float:right">T</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @if (Model.Yayin)
+                    {
+                        <li class="@(action == "Yayin" ? "active" : "")">
+                            <a href="@(genelLink)/Yayin">Yayınlar</a>
+                        </li>
+                    }
+
+                    <li class="@(action == "Takvim" ? "active" : "")">
+                        <a href="@(genelLink)/Takvim">Takvim</a>
+                    </li>
+
+                    @if (Model.Ogretmen)
+                    {
+                        <li class="@(action == "Ogretmen" ? "active" : "")">
+                            @if (controller == "Kurumsal")
+                            {
+                                <a href="@(genelLink)/Ogretmen">Ailemiz</a>
+                            }
+                            else
+                            {
+                                <a href="@(genelLink)/Ogretmen">Öğretmenler</a>
+                            }
+                        </li>
+                    }
+
+                    @if (Model.Galeri)
+                    {
+                        <li class="@(action == "Galeri" ? "active" : "")">
+                            <a href="@(genelLink)/Galeri">Galeri</a>
+                        </li>
+                    }
+
+                    @if (Model.Blog)
+                    {
+                        <li class="@(action == "Blog" ? "active" : "")">
+                            <a href="@(genelLink)/Blog">Blog</a>
+                        </li>
+                    }
+
+                    <li class="@(action == "Iletisim" ? "active" : "")">
+                        <a href="@(genelLink)/Iletisim">İletişim</a>
+                    </li>
+                    <li class="@(action == "Hakkimizda" ? "active" : "")">
+                        <a href="@(genelLink)/Hakkimizda">Hakkımızda</a>
+                    </li>
+                </ul>
+                <ul class="pull-right flip">
+
+                    <li>
+                        @if (controller == "Kurumsal")
+                        {
+                            <a class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-10 pl-10" href="@(genelLink)/Franchise">Temsilcimiz Olun</a>
+                        }
+                        <a href="#SinavSonucModal" data-lightbox="inline" class="btn btn-colored btn-flat text-white font-14 mt-0 p-25 pr-10 pl-10" style="background-color: #1EA497;">Sınav Sonuçları</a>
+                        <a href="https://akillitahta.fencebir.com/" target="_blank" class="btn btn-colored btn-flat text-white font-14 mt-0 p-25 pr-10 pl-10" style="background-color: #5D6D7E;">Akıllı Tahta</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+

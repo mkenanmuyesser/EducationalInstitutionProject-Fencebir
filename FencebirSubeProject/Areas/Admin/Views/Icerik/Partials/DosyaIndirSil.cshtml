@@ -1,0 +1,12 @@
+﻿@{
+    int id = Convert.ToInt32(ViewData["Id"]);
+}
+
+<div class="form-group row">
+    <div class="col-lg-6">
+        <a id="indir" href="javascript:void(0)" onclick="javascript: indir(@id);">İndir</a>
+    </div>
+    <div class="col-lg-6">
+        <a id="sil" href="javascript:void(0)" onclick="javascript: sil(@id);">Sil</a>
+    </div>
+</div>

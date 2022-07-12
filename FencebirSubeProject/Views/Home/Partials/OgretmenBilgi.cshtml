@@ -1,0 +1,66 @@
+﻿@model List<OgretmenViewModel>
+
+<style type="text/css">
+    .team-thumb:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<section class="bg-lighter pb-70">
+    <div class="container pb-0">
+        <div class="section-title mb-10">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1">FENCEBİR <span class="text-theme-color-2 font-weight-400">ÖĞRETMENLER</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row mtli-row-clearfix">
+            <div class="col-md-12">
+                <div class="owl-carousel-4col">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="team-members maxwidth400">
+                                <div class="team-thumb">
+                                    <img class="img-fullwidth" alt="" src="@item.Resim">
+                                </div>
+                                <div class="team-bottom-part border-bottom-theme-color-2-2px bg-lighter border-1px text-center p-10 pt-20 pb-10">
+                                    <h4 class="text-uppercase font-raleway font-weight-600 m-0"><a class="text-theme-color-2" href=""> @item.AdSoyad</a></h4>
+                                    <h5 class="text-theme-color">@item.Unvan</h5>
+                                    <ul class="styled-icons icon-sm icon-dark icon-theme-colored">
+                                        @if (!string.IsNullOrEmpty(item.FacebookHesapUrl))
+                                        {
+                                            <li><a target="_blank" href="@item.FacebookHesapUrl"><i class="fa fa-facebook"></i></a></li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(item.TwitterHesapUrl))
+                                        {
+                                            <li><a target="_blank" href="@item.TwitterHesapUrl"><i class="fa fa-twitter"></i></a></li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(item.InstagramHesapUrl))
+                                        {
+                                            <li><a target="_blank" href="@item.InstagramHesapUrl"><i class="fa fa-instagram"></i></a></li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(item.WhatsappHesapUrl))
+                                        {
+                                            <li><a target="_blank" href="@item.WhatsappHesapUrl"><i class="fa fa-whatsapp"></i></a></li>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(item.YoutubeHesapUrl))
+                                        {
+                                            <li><a target="_blank" href="@item.YoutubeHesapUrl"><i class="fa fa-youtube"></i></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,197 @@
+﻿@{var layoutModel = ViewBag.LayoutData as LayoutViewModel; }
+
+@{
+    var controller = @ViewContext.RouteData.Values["Controller"].ToString();
+    var action = @ViewContext.RouteData.Values["Action"].ToString();
+    var id = @ViewContext.RouteData.Values["Id"] == null ? "" : @ViewContext.RouteData.Values["Id"].ToString();
+    var genelLink = "/" + controller + (id == "" ? "" : "/" + id);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Eğitim, Akademi, Kurs, Uzaktan Eğitim" />
+    <meta name="keywords" content="Eğitim, Akademi, Kurs, Uzaktan Eğitim" />
+    <meta name="author" content="Fencebir" />
+    <meta name="google-site-verification" content="4WcDcc6SzbrYorJkpIKjPXpSr3TS4mGxU6TEJuH_OPo" />
+
+    <title>FenCebir Kurumsal - @ViewData["Title"]</title>
+
+    <!-- Favicon and Touch Icons -->
+    <link href="/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/Themes/FrontEnd/studypress-client-html/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="/Themes/FrontEnd/studypress-client-html/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/Themes/FrontEnd/studypress-client-html/css/css-plugin-collections.css" rel="stylesheet" />
+    <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="/Themes/FrontEnd/studypress-client-html/css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet" />
+    <!-- CSS | Main style file -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/style-main.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Preloader Styles -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/preloader.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Custom Margin Padding Collection -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Responsive media queries -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/responsive.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+    <!-- <link href="/Themes/FrontEnd/studypress-client-html/css/style.css" rel="stylesheet" type="text/css"> -->
+    <!-- Revolution Slider 5.x CSS settings -->
+    <link href="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+
+    <!-- CSS | Theme Color -->
+    <link href="/Themes/FrontEnd/studypress-client-html/css/colors/theme-skin-color-set-4.css" rel="stylesheet" type="text/css">
+
+    <!-- external javascripts -->
+    <script src="/Themes/FrontEnd/studypress-client-html/js/jquery-2.2.4.min.js"></script>
+    <script src="/Themes/FrontEnd/studypress-client-html/js/jquery-ui.min.js"></script>
+    <script src="/Themes/FrontEnd/studypress-client-html/js/bootstrap.min.js"></script>
+    <!-- JS | jquery plugin collection for this theme -->
+    <script src="/Themes/FrontEnd/studypress-client-html/js/jquery-plugin-collection.js"></script>
+
+    <!-- Revolution Slider 5.x SCRIPTS -->
+    <script src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Ads: 555429738 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-555429738"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-555429738');
+    </script>
+
+    <!-- Event snippet for Website traffic conversion page -->
+    <script>gtag('event', 'conversion', { 'send_to': 'AW-555429738/0RTOCKKv7eMBEOre7IgC' });</script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/Themes/FrontEnd/studypress-client-html/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/Themes/FrontEnd/studypress-client-html/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper" class="clearfix">
+        <div id="preloader">
+            <div id="spinner">
+                <div class="preloader-dot-loading">
+                    <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+                </div>
+            </div>
+        </div>
+
+        <header id="header" class="header">
+            <div class="header-top bg-theme-color-2 sm-text-center p-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="widget m-0 pull-right sm-pull-none sm-text-center">
+                            </div>
+                            <div class="widget no-border m-0 pull-right flip sm-pull-none sm-text-center">
+                                <ul class="styled-icons icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
+                                    @if (!string.IsNullOrEmpty(layoutModel.IletisimData.FacebookHesapUrl))
+                                    {
+                                        <li><a target="_blank" href="@layoutModel.IletisimData.FacebookHesapUrl"><i class="fa fa-facebook text-white"></i></a></li>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(layoutModel.IletisimData.TwitterHesapUrl))
+                                    {
+                                        <li><a target="_blank" href="@layoutModel.IletisimData.TwitterHesapUrl"><i class="fa fa-twitter text-white"></i></a></li>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(layoutModel.IletisimData.InstagramHesapUrl))
+                                    {
+                                        <li><a target="_blank" href="@layoutModel.IletisimData.InstagramHesapUrl"><i class="fa fa-instagram text-white"></i></a></li>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(layoutModel.IletisimData.WhatsappHesapUrl))
+                                    {
+                                        <li><a target="_blank" href="tel:@layoutModel.IletisimData.WhatsappHesapUrl"><i class="fa fa-whatsapp text-white"></i></a></li>
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(layoutModel.IletisimData.YoutubeHesapUrl))
+                                    {
+                                        <li><a target="_blank" href="@layoutModel.IletisimData.YoutubeHesapUrl"><i class="fa fa-youtube text-white"></i></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-middle p-0 bg-lightest xs-text-center">
+                <div class="container pt-0 pb-0">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-5">
+                            <div class="widget no-border m-0">
+                                <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="@(genelLink)"><img src="@layoutModel.Logo" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-7">
+                            <div class="widget no-border pull-right sm-pull-none sm-text-center mt-10 mb-10 m-0">
+                                <ul class="list-inline">
+                                    <li><i class="fa fa-phone-square text-theme-colored font-36 mt-5 sm-display-block"></i></li>
+                                    <li>
+                                        <a href="#" class="font-12 text-gray text-uppercase">BİZİ ARAYIN!</a>
+                                        @if (!string.IsNullOrEmpty(layoutModel.IletisimData.SirketTelefon1))
+                                        {
+                                            <h5 class="font-14 m-0"> @layoutModel.IletisimData.SirketTelefon1</h5>
+                                        }
+
+                                        @if (!string.IsNullOrEmpty(layoutModel.IletisimData.SirketTelefon2))
+                                        {
+                                            <h5 class="font-14 m-0"> @layoutModel.IletisimData.SirketTelefon2</h5>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <partial name="~/Views/Shared/Partials/Menu.cshtml" model="@layoutModel.MenuSubeTemsilciList" />
+        </header>
+
+        <div class="main-content">
+            @RenderBody()
+
+            <section class="clients bg-theme-color-2">
+                <div class="container pt-10 pb-0">
+                </div>
+            </section>
+        </div>
+
+        <partial name="~/Views/Shared/Partials/Footer.cshtml" model="@layoutModel" />
+
+        <partial name="~/Views/Shared/Partials/CookiePolicy.cshtml" />
+
+        <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+
+    <script src="/Themes/FrontEnd/studypress-client-html/js/custom.js" charset="ISO-8859-1"></script>
+
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="/Themes/FrontEnd/studypress-client-html/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

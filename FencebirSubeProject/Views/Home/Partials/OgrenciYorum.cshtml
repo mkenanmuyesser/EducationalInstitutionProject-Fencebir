@@ -1,0 +1,34 @@
+﻿@model List<OgrenciYorumViewModel>
+
+<section class="divider parallax layer-overlay overlay-theme-colored-9" data-background-ratio="0.5" data-bg-img="/Uploads/TopBanner/TopBanner_8.jpg">
+    <div class="container pb-50">
+        <div class="section-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="font-weight-300 m-0 text-gray-lightgray">MUTLU ÖĞRENCİ</h5>
+                    <h2 class="mt-0 mb-0 text-uppercase line-bottom text-white font-28">YORUMLARI<span class="font-30 text-theme-color-2">.</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-10">
+                <div class="owl-carousel-2col boxed" data-dots="true">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="testimonial pt-10">
+                                <div class="thumb pull-left mb-0 mr-0 pr-20">
+                                    <img style="width:75px !important" class="img-circle" alt="" src="@item.Resim">
+                                </div>
+                                <div class="ml-100 ">
+                                    <h4 class="text-white mt-0">@item.Yorum</h4>
+                                    <p class="author mt-20">- <span class="text-theme-color-2">@item.OgrenciAdSoyad</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
