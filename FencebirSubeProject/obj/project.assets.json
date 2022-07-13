@@ -9403,24 +9403,27 @@
   },
   "packageFolders": {
     "C:\\Users\\kenan\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programlar\\FencebirSubeProject\\FencebirSubeProject\\FencebirSubeProject.csproj",
+      "projectUniqueName": "D:\\Programlar\\_Git\\EducationalInstitutionProject-Fencebir\\FencebirSubeProject\\FencebirSubeProject.csproj",
       "projectName": "FencebirSubeProject",
-      "projectPath": "D:\\Programlar\\FencebirSubeProject\\FencebirSubeProject\\FencebirSubeProject.csproj",
+      "projectPath": "D:\\Programlar\\_Git\\EducationalInstitutionProject-Fencebir\\FencebirSubeProject\\FencebirSubeProject.csproj",
       "packagesPath": "C:\\Users\\kenan\\.nuget\\packages\\",
-      "outputPath": "D:\\Programlar\\FencebirSubeProject\\FencebirSubeProject\\obj\\",
+      "outputPath": "D:\\Programlar\\_Git\\EducationalInstitutionProject-Fencebir\\FencebirSubeProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\kenan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -9512,7 +9515,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   }

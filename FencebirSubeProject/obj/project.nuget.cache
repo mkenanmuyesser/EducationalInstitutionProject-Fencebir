@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FGUjIQbfryhqtTicyG46sJ72yaT2g9Ms2ixmuekCzNp8B0jdCrXP1/IUhicjrZHnTs1+S8cm5XdcFDKGD9UAgw==",
+  "dgSpecHash": "EUusR/UzKY1hixQucZ1Mdc8jUYVJ9Idh7mS8gLPQJ7gKdvWd3agJAR97SVGYvpomk8hlZnYVPA4XzvmQ5QVmWg==",
   "success": true,
-  "projectFilePath": "D:\\Programlar\\FencebirSubeProject\\FencebirSubeProject\\FencebirSubeProject.csproj",
+  "projectFilePath": "D:\\Programlar\\_Git\\EducationalInstitutionProject-Fencebir\\FencebirSubeProject\\FencebirSubeProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kenan\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\kenan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
