@@ -8,3 +8,7 @@ Used technologies : C#, Asp.Net Core, MS Sql Server, Html5, Bootstrap, Entity Fr
 
 It was created to be used by educational institutions and branches.
 All website pages are populated by database, all the page parts are dynamically populated.
+
+Minran Kenan MÜYESSER
+mkenanmuyesser@hotmail.com
+https://www.linkedin.com/in/minran-kenan-müyesser
