@@ -11,4 +11,4 @@ All website pages and page parts are dynamically populated by database.
 
 Minran Kenan MÜYESSER
 mkenanmuyesser@hotmail.com
-https://www.linkedin.com/in/minran-kenan-müyesser
+https://www.linkedin.com/in/mkenanmuyesser
